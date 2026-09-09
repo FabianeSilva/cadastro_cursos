@@ -34,6 +34,12 @@ public class CursoController {
         return ResponseEntity.ok(service.buscarCursoPorId(id));
     }
 
+    @GetMapping("{filtro}")
+    public ResponseEntity<List<Curso>> buscarCursoPorNomeOuCategoria(@RequestParam(required = false) String nomeCurso,
+                                                                     @RequestParam(required = false) String categoria){
+        return ResponseEntity.ok(service.buscarCursoPorNomeOuCategoria(nomeCurso, categoria));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarCursoPorId(@PathVariable (name = "id") UUID id){
         service.deletarCursoPorId(id);
