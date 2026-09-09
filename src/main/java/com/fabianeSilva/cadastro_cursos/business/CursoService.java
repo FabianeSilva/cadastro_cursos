@@ -10,7 +10,7 @@ import java.util.UUID;
 @Service
 public class CursoService {
 
-    public final CursoRepository repository;
+    private final CursoRepository repository;
 
     public CursoService(CursoRepository repository){
         this.repository=repository;
