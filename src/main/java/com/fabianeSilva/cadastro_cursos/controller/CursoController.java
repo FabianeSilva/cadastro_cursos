@@ -46,4 +46,11 @@ public class CursoController {
         service.atualizarCursoPorId(id, curso);
         return ResponseEntity.ok().build();
     }
+
+    @PatchMapping("/{id}/active")
+    public ResponseEntity<Void> alterarStatusCurso(@PathVariable (name = "id") UUID id){
+        service.alterarStatusCurso(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }

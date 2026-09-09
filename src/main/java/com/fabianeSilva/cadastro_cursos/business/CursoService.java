@@ -44,4 +44,11 @@ public class CursoService {
 
             repository.saveAndFlush(cursoAtualizado);
     }
+
+    public void alterarStatusCurso(UUID id){
+        Curso curso = repository.findById(id).orElseThrow(()-> new RuntimeException("Id não encontrado!"));
+
+        curso.setAtivo(!curso.getAtivo());
+        repository.saveAndFlush(curso);
+    }
 }
