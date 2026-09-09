@@ -28,6 +28,19 @@ public class CursoService {
         return repository.findById(id).orElseThrow(()-> new RuntimeException("Id não encontrado!"));
     }
 
+    public List<Curso> buscarCursoPorNomeOuCategoria(String nomeCurso, String categoria){
+
+        if (nomeCurso != null && nomeCurso.isBlank()){
+            nomeCurso = null;
+        }
+        if (categoria != null && categoria.isBlank()){
+            categoria = null;
+        }
+
+        return repository.findByNomeCursoContainingIgnoreCaseOrCategoriaContainingIgnoreCase(nomeCurso, categoria);
+
+    }
+
     public void deletarCursoPorId(UUID id){
         repository.deleteById(id);
     }
