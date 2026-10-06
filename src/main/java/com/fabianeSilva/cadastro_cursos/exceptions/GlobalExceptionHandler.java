@@ -17,13 +17,13 @@ public class GlobalExceptionHandler {
 
         Map<String, String> resposta = new HashMap<>();
 
-        resposta.put("messagem", exception.getMessage());
+        resposta.put("mensagem", exception.getMessage());
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(resposta);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> tratarValidacao(MethodArgumentNotValidException exception){
+    public ResponseEntity<Map<String, String>> tratarValidação(MethodArgumentNotValidException exception){
 
         Map<String, String> resposta = new HashMap<>();
 
@@ -32,7 +32,9 @@ public class GlobalExceptionHandler {
                 .getFieldError()
                 .getDefaultMessage();
 
-        resposta.put("mensagem", mensagem);
+                resposta.put("mensagem", mensagem);
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(resposta);
     }
+
 }
